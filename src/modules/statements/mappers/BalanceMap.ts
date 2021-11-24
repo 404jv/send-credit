@@ -7,11 +7,22 @@ export class BalanceMap {
       amount,
       description,
       type,
+      sender_id,
       created_at,
       updated_at
     }) => (
+      !sender_id ?
       {
         id,
+        amount: Number(amount),
+        description,
+        type,
+        created_at,
+        updated_at
+      } :
+      {
+        id,
+        sender_id,
         amount: Number(amount),
         description,
         type,

@@ -10,9 +10,10 @@ import { v4 as uuid } from 'uuid';
 
 import { User } from '../../users/entities/User';
 
-enum OperationType {
+export enum OperationType {
   DEPOSIT = 'deposit',
   WITHDRAW = 'withdraw',
+  TRANSFER = 'transfer'
 }
 
 @Entity('statements')
@@ -35,6 +36,9 @@ export class Statement {
 
   @Column({ type: 'enum', enum: OperationType })
   type: OperationType;
+
+  @Column()
+  sender_id?: string;
 
   @CreateDateColumn()
   created_at: Date;
